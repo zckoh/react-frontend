@@ -5,6 +5,7 @@ import MyNavBar from './components/Navbar.js';
 import HomePage from './views/Home/HomePage.js';
 import ProjectsPage from './views/Projects/ProjectsPage.js';
 import WhatToEatPage from './views/WhatToEat/WhatToEatPage.js';
+import Error404Page from './views/Error404Page';
 
 function App() {
     return (
@@ -16,8 +17,7 @@ function App() {
                     <Route exact path="/projects" component={ProjectsPage} />
                     <Route exact path="/what-to-eat" component={WhatToEatPage} />
                     <Route exact path="/" component={HomePage} />
-                    {/* TODO: CREATE ERROR 404 NO MATCH page */}
-                    <Route component={HomePage} />
+                    <Route component={Error404Page} />
                 </Switch>
             </Router>
         </div>
