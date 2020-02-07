@@ -24,8 +24,8 @@
     "react-scripts": "3.3.0"
   },
   "scripts": {
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -b master -d build",
+    "predeploy": "git remote set-url origin https://github.com/zckoh/zckoh.github.io.git && npm run build",
+    "deploy": "gh-pages -b master -d build && git remote set-url origin https://github.com/zckoh/react-frontend.git",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
