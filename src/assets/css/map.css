@@ -1,0 +1,11 @@
+.map-wrapper {
+    height: 80vh;
+}
+
+.map-box {
+    height: 80vh !important;
+    width: 100% !important;
+    display:block;
+    right: 0;
+    left: 0;
+}
