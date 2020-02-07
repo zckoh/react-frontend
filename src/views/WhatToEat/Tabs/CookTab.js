@@ -7,24 +7,10 @@ import {
 import DishViewModal from "../../../components/DishViewModal.js";
 import DishDeleteModal from "../../../components/DishDeleteModal.js";
 import DishEditModal from "../../../components/DishEditModal.js";
-
-const cookingDishes = [
-    {
-        id: 1,
-        name: "Rougaille with meat",
-        additional_details: "Thyme, tomatoes, onion, red pasta sauce, meat\r\n\r\nPossible meat options:\r\n- Sausage\r\n- Salmon\r\n- Beef\r\n- Pork\r\n- Chicken",
-        // date_added: "2020-01-11T23:59:02.861306Z"
-    },
-    {
-        id: 2,
-        name: "Coca-Cola Chicken Wings",
-        additional_details: "Coca-cola, chicken wings, ginger, soy sauce, sesame seeds",
-        // date_added: "2020-01-12T09:07:23.252530Z"
-    }
-];
+import RandomDishModal from "../../../components/RandomDishModal.js";
 
 
-
+import CookingDishes from "./CookingDishes";
 
 const CookTab = () => {
     const [addDishesModal, setAddDishesModal] = useState(false);
@@ -63,10 +49,21 @@ const CookTab = () => {
         setActiveItem(item);
     };
 
+    const [randomItemModal, setRandomItemModal] = useState(false);
+    const toggleRandomItemModal = () => { setRandomItemModal(!randomItemModal); }    
 
+    const handleRandomClick = () => {
+        let randomItem = CookingDishes[Math.floor(Math.random() * CookingDishes.length)];
+        setActiveItem(randomItem);
+    }
 
-    const DisplayDishes = cookingDishes => {    
-        return cookingDishes.map(dish => (
+    const viewRandomItem = () => {
+        handleRandomClick();
+        toggleRandomItemModal();
+    }
+
+    const DisplayDishes = dishes => {    
+        return dishes.map(dish => (
             <li
                 key={dish.id}
                 className="list-group-item d-flex justify-content-between align-items-center"
@@ -78,8 +75,8 @@ const CookTab = () => {
             </span>
             <span>
               <MDBBtn color="info" onClick={ () => {viewItem(dish);} }>View</MDBBtn>
-              <MDBBtn color="warning" onClick={ () => {editItem(dish);} }>Edit</MDBBtn>
-              <MDBBtn color="danger" onClick={ () => {deleteItem(dish);} }>Delete</MDBBtn>
+              {/* <MDBBtn color="warning" onClick={ () => {editItem(dish);} }>Edit</MDBBtn>
+              <MDBBtn color="danger" onClick={ () => {deleteItem(dish);} }>Delete</MDBBtn> */}
             </span>
           </li>
         ));
@@ -92,7 +89,6 @@ const CookTab = () => {
     };
 
     const onSave = (item, entireList) => {
-        // alert("save" + JSON.stringify(item));
         item.id=entireList[entireList.length-1].id + 1
         entireList.push(item);
         toggleAddDishesModal();
@@ -116,21 +112,28 @@ const CookTab = () => {
                 Cook at home!
             </h3>
             <MDBContainer fluid>
-                <MDBBtn
+                {/* <MDBBtn
                     color="primary"
                     onClick={ () => { toggleAddDishesModal();} }
                     style={{ "textTransform": "none" }}
                 >
                     Add a New Dish
-                </MDBBtn>
+                </MDBBtn> */}
                 <MDBBtn
                     color="green" 
                     style={{ "textTransform": "none" }}
+                    onClick={ () => { viewRandomItem(); }}
                 >
                     Randomly Choose a Dish
                 </MDBBtn>
             </MDBContainer>
-            {DisplayDishes(cookingDishes)}
+            {DisplayDishes(CookingDishes)}
+            <RandomDishModal
+                activeItem={activeItem}
+                toggle={toggleRandomItemModal}
+                modal={randomItemModal}
+                onRandomClick={ () => { handleRandomClick() } }            
+            />
             <DishViewModal
                 activeItem={activeItem}
                 toggle={toggleViewItemModal}
@@ -140,13 +143,13 @@ const CookTab = () => {
                 activeItem={activeItem}
                 toggle={toggleDeleteItemModal}
                 modal={deleteItemModal}
-                onDelete={ () => {onDelete(activeItem, cookingDishes)} }
+                onDelete={ () => {onDelete(activeItem, CookingDishes)} }
             />
             <DishEditModal
                 activeItem={activeItem}
                 toggle={toggleEditItemModal}
                 modal={editItemModal}
-                onSave={ () => {handleEdit(activeItem, cookingDishes)} }
+                onSave={ () => {handleEdit(activeItem, CookingDishes)} }
                 onChange={handleChange}
             />
             <MDBModal isOpen={addDishesModal} toggle={ () => { toggleAddDishesModal();} }>
@@ -180,7 +183,7 @@ const CookTab = () => {
                     <MDBBtn color='secondary' onClick={ () => { toggleAddDishesModal();} }>
                         Close
                     </MDBBtn>
-                    <MDBBtn color='primary' onClick={ () => onSave(activeItem, cookingDishes)}>Save</MDBBtn>
+                    <MDBBtn color='primary' onClick={ () => onSave(activeItem, CookingDishes)}>Save</MDBBtn>
                 </MDBModalFooter>
             </MDBModal>
         </MDBContainer>

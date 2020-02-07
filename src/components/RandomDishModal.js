@@ -3,7 +3,7 @@ import {
     MDBBtn, MDBModal, MDBModalBody, MDBModalFooter, MDBModalHeader, MDBInput
 } from "mdbreact";
 
-const DishViewModal = (props) => {
+const RandomDishModal = (props) => {
     return (
         <MDBModal isOpen={props.modal} toggle={props.toggle}>
             <MDBModalHeader 
@@ -22,7 +22,7 @@ const DishViewModal = (props) => {
                     group
                     type='text'
                     onChange={props.onChange}
-                    valueDefault={props.activeItem.name}
+                    value={props.activeItem.name}
                     validate
                 />
                 <MDBInput
@@ -31,7 +31,7 @@ const DishViewModal = (props) => {
                     name="additional_details"
                     rows='9'
                     label='Additional Details'
-                    valueDefault={props.activeItem.additional_details}
+                    value={props.activeItem.additional_details}
                     onChange={props.onChange}
                 />
             </form>
@@ -40,10 +40,13 @@ const DishViewModal = (props) => {
             <MDBBtn color='secondary' onClick={props.toggle}>
                 Close
             </MDBBtn>
+            <MDBBtn color='green' onClick={props.onRandomClick}>
+                Reroll
+            </MDBBtn>
             </MDBModalFooter>
         </MDBModal>
     );
 }
 
 
-export default DishViewModal;
+export default RandomDishModal;
