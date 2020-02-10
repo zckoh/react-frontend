@@ -21,7 +21,7 @@ const HomePage = () => {
                             About Me
                         </h2>
                         <p className="w-responsive text-center mx-auto mb-4">
-                            My name is Zac Koh, I'm from Penang, Malaysia but am currently based in Cambridge, UK.
+                            My name is Zac Koh, I'm from Penang, Malaysia but currently based in Cambridge, UK.
                             <br/>
                             I am an aspiring software engineer that is currently on a graduate developer role with Barclays.
                         </p>

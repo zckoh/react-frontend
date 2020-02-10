@@ -39,7 +39,7 @@ const ProjectsPage = () => {
               This is my first web development project which uses React. <br/>
               My website contains a landing page, a projects page which displays my recent projects and a web app page.
               <br/><br/>
-              My first web app (What To Eat!) helps the user to choose what to eat by randomly selecting at dish or a restaurant.
+              My first web app (What To Eat!) helps the user to choose what to eat by randomly selecting a dish or a restaurant.
             </p>
             <p>
               Technologies Used: React, Google Maps JavaScript API, Material Design for BootStrap (mdbootstrap)

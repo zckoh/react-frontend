@@ -4,6 +4,10 @@
 
 .map-box {
     height: 80vh !important;
-    width: 100% !important;
-    display:block;
+    width: 100vw;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
 }
