@@ -49,13 +49,25 @@ const MyNavbar = () => {
         <MDBCollapse id="navbarCollapse" isOpen={collapsed} navbar>
             <MDBNavbarNav left>
                 <MDBNavItem>
-                    <MDBNavLink to={"home"}><strong>Home</strong></MDBNavLink>
+                    <MDBNavLink to={"home"}>
+                        <div onClick={ () => { setCollapsed(false) } }>
+                            <strong>Home</strong>
+                        </div>
+                    </MDBNavLink>
                 </MDBNavItem>
                 <MDBNavItem>
-                    <MDBNavLink to={"projects"}><strong>Projects</strong></MDBNavLink>
+                    <MDBNavLink to={"projects"}>
+                        <div onClick={ () => { setCollapsed(false) } }>
+                            <strong>Projects</strong>
+                        </div>
+                    </MDBNavLink>
                 </MDBNavItem>
                 <MDBNavItem>
-                    <MDBNavLink to={"what-to-eat"}><strong>What To Eat!</strong></MDBNavLink>
+                    <MDBNavLink to={"what-to-eat"}>
+                        <div onClick={ () => { setCollapsed(false) } }>
+                            <strong>What To Eat!</strong>
+                        </div>
+                    </MDBNavLink>
                 </MDBNavItem>
                 <MDBNavItem>
                     <MDBDropdown className="mydropdown">
